@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+     <script>
+        var module=angular.module("myModule",[]);
+        var controller=module.controller("myController",function($scope,$http)
+        {
+        $scope.jsonRecordsAry=[];
+        $scope.jsonLocationsAry = [];
+        $scope.jsonCategoryAry = [];
+        
+        $scope.selectedLocation = ""; // Initialize selectedLocation
+        $scope.selectedCategory = ""; // Initialize selectedCategory
+        $scope.doFetchAllP=function()
+        {
+            let url="/angular-fetch-all-providers";
+            $http.get(url).then(success,errors);
+            function success(response)
+            {
+                $scope.jsonRecordsAry=response.data;
+            }
+            function errors(response)
+            {
+                alert(response.data);
+            }
+        }
+        $scope.Searchcard= function()
+        {
+          let url="/angular-fetch-one-card?Locationn="+$scope.selectedLocation +"&categoryy="+ $scope.selectedCategory;
+          $http.get(url).then(success,errors);
+            function success(response)
+            {
+              $scope.jsonRecordsAry=response.data;
+                // alert(JSON.stringify($scope.jsonLocationsAry));
+            }
+            function errors(response)
+            {
+                alert(response.data);
+            }
+        }
+        $scope.doFetchDistinctLocations=function()
+        {
+            let url="/angular-fetch-distinct-locations";
+            $http.get(url).then(success,errors);
+            function success(response)
+            {
+                $scope.jsonLocationsAry=response.data;
+                // alert(JSON.stringify($scope.jsonLocationsAry));
+            }
+            function errors(response)
+            {
+                alert(response.data);
+            }
+        }
+        // ?Location="+$scope.selectedLocation
+        $scope.doFetchDistinctCategories = function (selectedLocation) {
+    let url = "/angular-fetch-distinct-categories?location=" + selectedLocation;
+    $http.get(url).then(success, errors);
+    function success(response) {
+      $scope.jsonCategoryAry = response.data;
+    }
+    function errors(response) {
+      alert(response.data);
+    }
+  };
+
+      //   $scope.doShowSelLoc=function()
+      // {
+      //   //alert(JSON.stringify($scope.selPwd));
+      //   alert($scope.selLoc.location);
+      //   let url="/fetch-one-record?Location="+$scope.selLoc.location;
+      //   $http.get(url).then(success,errors);
+      //       function success(response)
+      //       {
+      //           $scope.jsonLocationsAry=response.data;
+      //       }
+      //       function errors(response)
+      //       {
+      //           alert(response.data);
+      }
+
+      
+        
+        )
+     </script>
+    <!-- <style>
+        #modalshow{
+            background-color:aliceblue;
+            
+        }
+    </style> -->
+   
+</head>
+<body ng-app="myModule" ng-controller="myController"  ng-init="doFetchAllP();doFetchDistinctLocations();doFetchDistinctCategories();" style="margin:0px;padding:0px;background-color:rgb(249, 244, 244)">
+    <div class="row">
+        <div class="col-md-5 mr-2">
+         
+          
+          <center><h2>
+       
+         <p> Search Providers → </p>
+
+          </h2>
+        </center>
+        </div>
+        <!-- <div class="col-md-3" >
+          <select ng-options="obj.location for obj in jsonLocationsAry" ng-model="selLoc" ng-change="doShowSelLoc(); >
+            <option value="">Select Location</option>
+         </select>
+         
+        </div> -->
+       <!-- Corrected ng-model for the "Select Location" dropdown -->
+<!-- Corrected ng-model for the "Select Location" dropdown -->
+
+<div class="col-md-2">
+  <select ng-model="selectedLocation" ng-change="doFetchDistinctCategories(selectedLocation)">
+    <option value="" disabled selected>Select Location</option>
+    <option ng-repeat="obj in jsonLocationsAry" value="{{obj.location}}">{{obj.location}}</option>
+  </select>
+</div>
+
+<!-- Corrected ng-model for the "Select Category" dropdown -->
+<div class="col-md-2">
+  <select ng-model="selectedCategory">
+    <option value="" disabled selected>Select Category</option>
+    <option ng-repeat="obj in jsonCategoryAry" value="{{obj.category}}">{{obj.category}}</option>
+  </select>
+</div>
+<div class="col-md-2">
+  <input type="button" value="Search"  ng-click="Searchcard();" style="background-color:hsl(238, 73%, 91%)" >
+</div>
+
+
+        
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mr-1 mt-3 mb-3" ng-repeat="obj in jsonRecordsAry">
+                <div class="card" >
+                    <img ng-src="uploads/{{obj.picname}}" class="card-img-top" alt="This image is deleted by admin " height="150">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title"> Email.id:{{obj.emailidddd}}</h5>
+                      <p class="card-text">
+                        <p>
+                            Name: {{obj.name}};
+                            
+                          
+                        </p>
+                        <p>
+                            Contact Number :{{obj.contactnum}};
+                        </p>
+
+                        
+                      </p>
+                      <div class="modal "  id="modalshow{{$index}}"  tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header" style="background-color: #e0dedc;">
+                             <div class="modal-title" >Full Details</div>
+                             
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="background-color: #d5cdcd;"  >
+                                <div>
+                                    <img ng-src="uploads/{{obj.picname}}" class="card-img-top" alt="" height="150">
+                                </div>
+                                
+                               <div style="background-color: #e0dedc;">
+                              <p>Email.id:{{obj.emailidddd}}</p>
+                              <p> Name: {{obj.name}};</p>
+                              <p> Contact Number :{{obj.contactnum}};</p>
+                              <p>Gender:{{obj.gender}}</p>
+                              <p>Category:{{obj.category}}</p>
+                              <p>Firm:{{obj.firm}}</p>
+                              <p>Website:{{obj.website}}</p>
+                              <p>Location:{{obj.location}}</p>
+                              <p>Established Since:{{obj.estsince}}</p>
+                              <p>Other Info:{{obj.otherinfo}}</p>
+                            </div>
+                              
+                            </div>
+                            <div class="modal-footer"style="background-color: #e0dedc;">
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   
+                       <input type="button"  data-bs-target="#modalshow{{$index}}" data-bs-toggle="modal" value="Show Full Details" class="btn btn-primary">
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

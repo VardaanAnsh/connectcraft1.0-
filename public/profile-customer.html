@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        body {
+            background-color: hsl(209, 23%, 82%);
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .left-div {
+            background-color: #17a2b8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .left-div img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .right-div {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 left-div">
+                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL7eJgfuu6cBLSk80m_10U3vl4DNpA_aKg73s65HRspDepnHubqMFEZLEOW3cGYuc-Uao&usqp=CAU" class="img-fluid pt-4" alt="Image 1"><br><br>
+                <img src="https://www.brightgauge.com/hubfs/Blog/data-visualization.png" class="img-fluid pt-5" alt="Image 2"><br><br>
+                <img src="https://www.brightgauge.com/hubfs/Blog/How-Your-Business-Can-Benefit-E-Automate-Dashboard-Integration_300253849.png" class="img-fluid pt-5" alt="Image 3"> 
+                  <img src="https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w1200/2023/10/free-images.jpg" class="img-fluid" alt="Image 4">
+                <img src="https://img.freepik.com/free-photo/digital-painting-mountain-with-colorful-tree-foreground_1340-25699.jpg" class="img-fluid" alt="Image 5">  
+            </div>
+            
+            <div class="col-md-5 right-div">
+                <h2 class="mb-4"> CUSTOMER PROFILE</h2>
+                <form action="/saveeee"  enctype="multipart/form-data">
+                    <div class="form-group mb-4">
+                        <label for="txtEmail" class="required">Email ID</label>
+                        <input type="button" value="Search" id="searchbtn" name="searchbtn" style="background-color: hsl(210, 17%, 98%);">
+                        <input type="email" class="form-control" id="txtEmail" name="emaill" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="first-name">First Name</label>
+                        <input type="text" class="form-control" id="first-name" name="firstnamee" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" class="form-control" id="last-name" name="lastnamee" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="contactnumber1">Contact Number</label>
+                        <input type="text" class="form-control" id="contactnumber1" name="contactnumber11" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="street-address">Address</label>
+                        <input type="text" class="form-control" id="street-address" name="streetaddresss" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="cityy" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="region">State / Province</label>
+                        <input type="text" class="form-control" id="region" name="regionn" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="ppic" class="form-label">Profile Pic</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="ppic" name="ppic"  aria-describedby="inputGroupFileAddon04" required aria-label="Upload" onchange="previewImage(this)">
+                        </div>
+                        <img id="img-preview" src="" alt="Preview" class="d-none" width="400" height="300">
+                    </div>
+                   
+                    <div class="form-group mb-4">
+                        <input type="checkbox" id="rules"> Terms and Conditions applied 
+                    </div>
+                   
+                    <button class="btn btn-primary mb-4" id="save" type="submit" style="font-size:20px;">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

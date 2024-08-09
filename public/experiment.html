@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Service Provider Profile</title>
+    <script>
+        function previewImage(input) 
+{
+    var preview = document.getElementById('img-preview');
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+        preview.classList.remove('d-none');
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = '';
+        preview.classList.add('d-none');
+    }
+}
+</script>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: antiquewhite;">
+    <div>
+    <center>
+        <marquee behavior="alternate" scrollamount="9" width="600" bgcolor="White">
+            <h3>Service Provider Profile</h3>
+        </marquee>
+    </center>
+</div>
+    <div class="container mt-5">
+        <!-- Email Section -->
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter Email ID" aria-label="Enter Email ID"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="col-md-6">
+                <label for="contact">Contact Number:</label>
+                <input type="text" class="form-control" id="contact">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="gender">Gender:</label>
+                <select class="form-control" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="category">Category:</label>
+                <input type="text" class="form-control" id="category">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="firm">Firm:</label>
+                <input type="text" class="form-control" id="firm">
+            </div>
+            <div class="col-md-6">
+                <label for="website">Website:</label>
+                <input type="text" class="form-control" id="website">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location">
+            </div>
+            <div class="col-md-6">
+                <label for="established">Established Since:</label>
+                <input type="text" class="form-control" id="established">
+            </div>
+        </div>
+
+        <!-- ID Proof and Preview -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="idProof">ID Proof:</label>
+                <input type="file" class="form-control-file" id="idProof" onchange="previewImage(this)">
+            </div>
+
+            <div class="col-md-6">
+                <label>Preview:</label>
+                <div >
+                     <img id="img-preview" src="" alt="Preview" class="d-none"  width="400" height="300">
+                    </div>
+            </div>
+            <!-- <div class="input-group">
+                <input type="file" class="form-control" id="ppic" name="ppic"  aria-describedby="inputGroupFileAddon04" required aria-label="Upload" onchange="previewImage(this)">
+
+            </div>
+            <img id="img-preview" src="" alt="Preview" class="d-none"  width="400" height="300"> -->
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label for="Other Info">Specialization/Other Info/Previous Work</label>
+               
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Write description" id="wtbdname" name="wtbdname"  style="height: 90px;width: 320px;border:1px solid #d7d9d9;"></textarea>
+               
+              </div>
+          
+        </div>
+        <!-- Upload and Edit Buttons -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <button class="btn btn-success">Upload Data</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-info">Edit My Info</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
